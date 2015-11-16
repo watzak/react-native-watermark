@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C24862221BFA2521009D0AAB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24862211BFA2521009D0AAB /* QuartzCore.framework */; };
+		C24862241BFA252C009D0AAB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24862231BFA252C009D0AAB /* CoreMedia.framework */; };
+		C24862251BFA2535009D0AAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C294B5FC1BF9FE4800EE618B /* UIKit.framework */; };
+		C24862271BFA253E009D0AAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24862261BFA253E009D0AAB /* Foundation.framework */; };
+		C24862291BFA2545009D0AAB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24862281BFA2545009D0AAB /* CoreGraphics.framework */; };
 		C294B5E01BF9D91700EE618B /* RNWatermark.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C294B5DF1BF9D91700EE618B /* RNWatermark.h */; };
 		C294B5E21BF9D91700EE618B /* RNWatermark.m in Sources */ = {isa = PBXBuildFile; fileRef = C294B5E11BF9D91700EE618B /* RNWatermark.m */; };
+		C294B5FF1BF9FE7C00EE618B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C294B5FE1BF9FE7C00EE618B /* AVFoundation.framework */; };
+		C2DA1F6A1BFA3A9000745B50 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DA1F691BFA3A9000745B50 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +32,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C24862211BFA2521009D0AAB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C24862231BFA252C009D0AAB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		C24862261BFA253E009D0AAB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C24862281BFA2545009D0AAB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C294B5DC1BF9D91700EE618B /* libRNWatermark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNWatermark.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C294B5DF1BF9D91700EE618B /* RNWatermark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNWatermark.h; sourceTree = "<group>"; };
 		C294B5E11BF9D91700EE618B /* RNWatermark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNWatermark.m; sourceTree = "<group>"; };
+		C294B5FC1BF9FE4800EE618B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C294B5FE1BF9FE7C00EE618B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C2DA1F691BFA3A9000745B50 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		C2DA1F6B1BFA3D1200745B50 /* Frame-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Frame-1.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +50,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DA1F6A1BFA3A9000745B50 /* AssetsLibrary.framework in Frameworks */,
+				C24862291BFA2545009D0AAB /* CoreGraphics.framework in Frameworks */,
+				C24862271BFA253E009D0AAB /* Foundation.framework in Frameworks */,
+				C24862251BFA2535009D0AAB /* UIKit.framework in Frameworks */,
+				C24862241BFA252C009D0AAB /* CoreMedia.framework in Frameworks */,
+				C24862221BFA2521009D0AAB /* QuartzCore.framework in Frameworks */,
+				C294B5FF1BF9FE7C00EE618B /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +66,14 @@
 		C294B5D31BF9D91700EE618B = {
 			isa = PBXGroup;
 			children = (
+				C2DA1F6B1BFA3D1200745B50 /* Frame-1.png */,
+				C2DA1F691BFA3A9000745B50 /* AssetsLibrary.framework */,
+				C24862281BFA2545009D0AAB /* CoreGraphics.framework */,
+				C24862261BFA253E009D0AAB /* Foundation.framework */,
+				C24862231BFA252C009D0AAB /* CoreMedia.framework */,
+				C24862211BFA2521009D0AAB /* QuartzCore.framework */,
+				C294B5FE1BF9FE7C00EE618B /* AVFoundation.framework */,
+				C294B5FC1BF9FE4800EE618B /* UIKit.framework */,
 				C294B5DE1BF9D91700EE618B /* RNWatermark */,
 				C294B5DD1BF9D91700EE618B /* Products */,
 			);
@@ -212,6 +242,10 @@
 		C294B5E61BF9D91700EE618B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/node_modules/react-native/React/**",
+					"$(SRCROOT)/../react-native/React/**",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -221,6 +255,10 @@
 		C294B5E71BF9D91700EE618B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/node_modules/react-native/React/**",
+					"$(SRCROOT)/../react-native/React/**",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -246,6 +284,7 @@
 				C294B5E71BF9D91700EE618B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

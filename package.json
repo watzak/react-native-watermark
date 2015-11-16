@@ -1,0 +1,27 @@
+{
+  "name": "react-native-watermark",
+  "version": "0.0.1",
+  "description": "A react-native interface to create watermarks on videos and/or images(iOS)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/watzak/react-native-watermark.git"
+  },
+  "keywords": [
+    "react-native",
+    "video",
+    "image",
+    "watermark",
+    "stamp",
+    "ios"
+  ],
+  "author": "Klaus Zahiragic <klaus.zahiragic@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/watzak/react-native-watermark/issues"
+  },
+  "homepage": "https://github.com/watzak/react-native-watermark#readme"
+}
