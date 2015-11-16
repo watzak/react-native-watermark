@@ -37,10 +37,12 @@ RCT_EXPORT_MODULE()
 }
 
 
-RCT_EXPORT_METHOD(add:(NSURL*)assetsLibraryURL) {
-    
-//- (void)videoOutput {
-    AVAsset *asset = [AVAsset assetWithURL:assetsLibraryURL];
+RCT_EXPORT_METHOD(add:(NSString*)path) {
+
+    NSURL *assetsLibraryURL = [NSURL URLWithString:path];
+    AVAsset *videoAsset = [AVAsset assetWithURL:assetsLibraryURL];
+    NSLog(@"videoAsset => %@", videoAsset);
+    //callback(@[[NSNull null], asset]);
     
     // 2 - Create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
     AVMutableComposition *mixComposition = [[AVMutableComposition alloc] init];
@@ -48,17 +50,19 @@ RCT_EXPORT_METHOD(add:(NSURL*)assetsLibraryURL) {
     // 3 - Video track
     AVMutableCompositionTrack *videoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo
                                                                         preferredTrackID:kCMPersistentTrackID_Invalid];
-    [videoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, self.videoAsset.duration)
-                        ofTrack:[[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
+    NSLog(@"videoTrack => %@", videoTrack);
+    [videoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration)
+                        ofTrack:[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
                          atTime:kCMTimeZero error:nil];
+    
     
     // 3.1 - Create AVMutableVideoCompositionInstruction
     AVMutableVideoCompositionInstruction *mainInstruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-    mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, self.videoAsset.duration);
+    mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, videoAsset.duration);
     
     // 3.2 - Create an AVMutableVideoCompositionLayerInstruction for the video track and fix the orientation.
     AVMutableVideoCompositionLayerInstruction *videolayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
-    AVAssetTrack *videoAssetTrack = [[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    AVAssetTrack *videoAssetTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
     UIImageOrientation videoAssetOrientation_  = UIImageOrientationUp;
     BOOL isVideoAssetPortrait_  = NO;
     CGAffineTransform videoTransform = videoAssetTrack.preferredTransform;
@@ -77,7 +81,7 @@ RCT_EXPORT_METHOD(add:(NSURL*)assetsLibraryURL) {
         videoAssetOrientation_ = UIImageOrientationDown;
     }
     [videolayerInstruction setTransform:videoAssetTrack.preferredTransform atTime:kCMTimeZero];
-    [videolayerInstruction setOpacity:0.0 atTime:self.videoAsset.duration];
+    [videolayerInstruction setOpacity:0.0 atTime:videoAsset.duration];
     
     // 3.3 - Add instructions
     mainInstruction.layerInstructions = [NSArray arrayWithObjects:videolayerInstruction,nil];
@@ -119,41 +123,9 @@ RCT_EXPORT_METHOD(add:(NSURL*)assetsLibraryURL) {
             [self exportDidFinish:exporter];
         });
     }];
-
     
-    /*
-    AVAsset *asset = [AVAsset assetWithURL:assetsLibraryURL];
-    AVAssetTrack *clipVideoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
-    AVMutableVideoComposition* composition = [AVMutableVideoComposition videoComposition];
     
-    //AVMutableComposition *composition = .(AVMutableVideoComposition *)composition size:(CGSize)size
-    //here we are setting its render size to its height x height (Square)
-    composition.renderSize = CGSizeMake(clipVideoTrack.naturalSize.height, clipVideoTrack.naturalSize.height);
-    
-    // 1 - set up the overlay
-    CALayer *overlayLayer = [CALayer layer];
-    UIImage *overlayImage = nil;
-
-    overlayImage = [UIImage imageNamed:@"Frame-1.png"];
-    
-    [overlayLayer setContents:(id)[overlayImage CGImage]];
-    overlayLayer.frame = CGRectMake(0, 0, clipVideoTrack.naturalSize.width, clipVideoTrack.naturalSize.height);
-    [overlayLayer setMasksToBounds:YES];
-    
-    // 2 - set up the parent layer
-    CALayer *parentLayer = [CALayer layer];
-    CALayer *videoLayer = [CALayer layer];
-    parentLayer.frame = CGRectMake(0, 0, clipVideoTrack.naturalSize.width, clipVideoTrack.naturalSize.height);
-    videoLayer.frame = CGRectMake(0, 0, clipVideoTrack.naturalSize.width, clipVideoTrack.naturalSize.height);
-    [parentLayer addSublayer:videoLayer];
-    [parentLayer addSublayer:overlayLayer];
-    
-    // 3 - apply magic
-    composition.animationTool = [AVVideoCompositionCoreAnimationTool
-                                 videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
-     */
-    
-   }
+}
 
 
 - (void)applyVideoEffectsToComposition:(AVMutableVideoComposition *)composition size:(CGSize)size

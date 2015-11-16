@@ -15,10 +15,9 @@
 
 @interface RNWatermark : NSObject <RCTBridgeModule>
 
-    @property(nonatomic, strong) AVAsset *videoAsset;
 
 - (void)exportDidFinish:(AVAssetExportSession*)session;
 - (void)applyVideoEffectsToComposition:(AVMutableVideoComposition *)composition size:(CGSize)size;
-//- (void)videoOutput;
+
 
 @end
