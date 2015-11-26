@@ -1,4 +1,4 @@
-# react-native-instagram-share
+# react-native-watermark
 react-native interface to create watermarks on videos and/or images(iOS)
 
 
