@@ -22,16 +22,8 @@ RCT_EXPORT_MODULE()
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (error) {
                         callback(@[error, [NSNull null]]);
-
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Video Saving Failed"
-                                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                        [alert show];
                     } else {
                         callback(@[[NSNull null], [outputURL absoluteString]]);
-
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Saved" message:@"Saved To Photo Album"
-                                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                        [alert show];
                     }
                 });
             }];
