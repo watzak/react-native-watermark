@@ -13,7 +13,7 @@
 RCT_EXPORT_MODULE()
 
 
-- (void)exportDidFinish:(AVAssetExportSession*)session {
+- (void)exportDidFinish:(AVAssetExportSession*)session :(RCTResponseSenderBlock)callback {
     if (session.status == AVAssetExportSessionStatusCompleted) {
         NSURL *outputURL = session.outputURL;
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
@@ -21,10 +21,14 @@ RCT_EXPORT_MODULE()
             [library writeVideoAtPathToSavedPhotosAlbum:outputURL completionBlock:^(NSURL *assetURL, NSError *error){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (error) {
+                        callback(@[error, [NSNull null]]);
+
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Video Saving Failed"
                                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                         [alert show];
                     } else {
+                        callback(@[[NSNull null], [outputURL absoluteString]]);
+
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Saved" message:@"Saved To Photo Album"
                                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                         [alert show];
@@ -36,8 +40,7 @@ RCT_EXPORT_MODULE()
 }
 
 
-RCT_EXPORT_METHOD(add:(NSString*)path) {
-
+RCT_EXPORT_METHOD(add:(NSString*)path :(RCTResponseSenderBlock)callback) {
     NSURL *assetsLibraryURL = [NSURL URLWithString:path];
     AVAsset *videoAsset = [AVAsset assetWithURL:assetsLibraryURL];
     NSLog(@"videoAsset => %@", videoAsset);
@@ -119,7 +122,7 @@ RCT_EXPORT_METHOD(add:(NSString*)path) {
     exporter.videoComposition = mainCompositionInst;
     [exporter exportAsynchronouslyWithCompletionHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self exportDidFinish:exporter];
+            [self exportDidFinish:exporter :callback];
         });
     }];
 
@@ -132,11 +135,11 @@ RCT_EXPORT_METHOD(add:(NSString*)path) {
     // 1 - set up the overlay
     CALayer *overlayLayer = [CALayer layer];
     UIImage *overlayImage = nil;
-    overlayImage = [UIImage imageNamed:@"Frame-1.png"];
+    overlayImage = [UIImage imageNamed:@"yolo-small"];
 
 
     [overlayLayer setContents:(id)[overlayImage CGImage]];
-    overlayLayer.frame = CGRectMake(0, 0, size.width, size.height);
+    overlayLayer.frame = CGRectMake(size.width - (152+20), 20, 152, 31);
     [overlayLayer setMasksToBounds:YES];
 
     // 2 - set up the parent layer
