@@ -23,7 +23,7 @@ RCT_EXPORT_MODULE()
                     if (error) {
                         callback(@[error, [NSNull null]]);
                     } else {
-                        callback(@[[NSNull null], [outputURL absoluteString]]);
+                        callback(@[[NSNull null], [assetURL absoluteString]]);
                     }
                 });
             }];
