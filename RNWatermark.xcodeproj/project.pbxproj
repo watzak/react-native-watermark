@@ -111,8 +111,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C294B5E51BF9D91700EE618B /* Build configuration list for PBXNativeTarget "RNWatermark" */;
 			buildPhases = (
-				C294B5D81BF9D91700EE618B /* Sources */,
 				C294B5D91BF9D91700EE618B /* Frameworks */,
+				C294B5D81BF9D91700EE618B /* Sources */,
 				C294B5DA1BF9D91700EE618B /* CopyFiles */,
 			);
 			buildRules = (
@@ -130,6 +130,9 @@
 		C294B5D41BF9D91700EE618B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = watzak;
 				TargetAttributes = {
@@ -253,6 +256,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/node_modules/react-native/React/**",
 					"$(SRCROOT)/../react-native/React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+					"$(SRCROOT)/../../../React",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -266,6 +271,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/node_modules/react-native/React/**",
 					"$(SRCROOT)/../react-native/React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+					"$(SRCROOT)/../../../React",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,6 +1,7 @@
 # react-native-watermark
 react-native interface to create watermarks on videos and/or images(iOS)
 
+Credit: [https://www.raywenderlich.com/30200/avfoundation-tutorial-adding-overlays-and-animations-to-videos](https://www.raywenderlich.com/30200/avfoundation-tutorial-adding-overlays-and-animations-to-videos)
 
 ## Getting started
 
